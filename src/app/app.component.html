@@ -1,20 +1,35 @@
-<html lang="en">
+<div class="py-3" style="width: 80vw">
+  <h1>Account Info</h1>
 
-<head>
-  <title>Chart.js example</title>
-</head>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Account Number</th>
+        <th scope="col">Date Time</th>
+        <th scope="col">Txn ID</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Category</th>
+        <th scope="col">Risk Profile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of tableData" class="hover" (click)="onClick(data)">
+        <td>{{data.accountNumber}}</td>
+        <td>{{data.date}}</td>
+        <td>{{data.txnId}}</td>
+        <td>{{data.amount}}</td>
+        <td>{{data.category}}</td>
+        <td>{{data.riskProfile}}</td>
+      </tr>
+    </tbody>
+  </table>
 
-<body>
-  <!-- <div style="width: 500px;"><canvas id="dimensions"></canvas></div><br/> -->
-  <div>
-    <label>Operational</label>
-    <canvas id="operational" width="400" height="400"></canvas>
+  <div *ngIf="showData">
+    <div>
+      <app-gauge></app-gauge>
+    </div>
+    <div>
+      <app-histogram></app-histogram>
+    </div>
   </div>
-  <!-- <canvas id="compliance" width="400" height="400"></canvas>
-  <canvas id="legal" width="400" height="400"></canvas> -->
-
-  <!-- <script type="module" src="dimensions.js"></script> -->
-
-</body>
-
-</html>
+</div>
